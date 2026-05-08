@@ -6,3 +6,6 @@ dependencies = [
     "yt-dlp",
     "mobileclip @ git+https://github.com/apple/ml-mobileclip.git",
 ]
+
+[tool.setuptools.packages.find]
+where = ["src"]

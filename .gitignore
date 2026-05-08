@@ -13,3 +13,5 @@ models/*.pt
 models/*.pth
 models/*.bin
 models/*.ckpt
+
+uv.lock
