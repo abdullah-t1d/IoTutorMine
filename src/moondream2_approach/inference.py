@@ -6,7 +6,7 @@ Pipeline per video:
   1. Load all 1fps frames from data/frames/{video_id}/
   2. pHash deduplication — skip frames too similar to the previous kept frame
   3. Run Moondream2 on each unique frame via Ollama
-  4. Aggregate responses → per-video component list
+  4. Aggregate: per component, which frames it appeared in
 
 Resumable: already-processed frames are skipped on re-run.
 
@@ -19,6 +19,7 @@ Usage:
 """
 
 import csv
+import re
 import sys
 from pathlib import Path
 
@@ -35,13 +36,13 @@ RESULTS_CSV = OUT_DIR / "results.csv"
 
 # ── Config ─────────────────────────────────────────────────────────────────────
 MODEL = "moondream"
-PHASH_THRESHOLD = 10     # hamming distance; higher = fewer frames kept (0–64)
+PHASH_THRESHOLD = 15     # increase to process fewer frames; lower = more frames (0–64)
 
 PROMPT = (
-    "List the electronic hardware components you can clearly see in this image. "
-    "Be specific (e.g. 'Arduino Uno', 'DHT11 sensor', 'breadboard', 'LED', 'resistor'). "
-    "Only include components you are confident about. "
-    "If no electronics are visible, respond with 'none'."
+    "What electronic components are visible in this image? "
+    "Reply with a list of component names only, one per line. "
+    "No descriptions, no explanations. "
+    "If no electronic components are visible, reply with 'none'."
 )
 
 
@@ -69,6 +70,17 @@ def select_unique_frames(frame_paths: list[Path]) -> list[Path]:
             selected.append(path)
             last_hash = h
     return selected
+
+
+def parse_components(response: str) -> list[str]:
+    """Extract individual component names from a free-text VLM response."""
+    components = []
+    for line in response.splitlines():
+        line = line.strip()
+        line = re.sub(r"^[\d]+[.)]\s*|^[-*•]\s*", "", line).strip()
+        if line and line.lower() != "none":
+            components.append(line)
+    return components
 
 
 def load_processed_frames() -> set:
@@ -138,28 +150,37 @@ def process_video(
 
 
 def aggregate_results() -> None:
-    """Collect all VLM responses per video and write one row per video to results.csv."""
-    video_responses: dict[str, list[str]] = {}
+    """
+    Parse all VLM responses and build a per-video, per-component frame index.
+    Output: one row per (video_id, component) with the frames it was seen in.
+    """
+    # {video_id: {component: [frame, frame, ...]}}
+    index: dict[str, dict[str, list[str]]] = {}
 
     with open(VLM_RESPONSES_CSV, newline="", encoding="utf-8") as f:
         for row in csv.DictReader(f):
             vid = row["video_id"]
-            resp = row["response"].strip().lower()
-            if resp and resp != "none" and resp != "error":
-                video_responses.setdefault(vid, []).append(row["response"].strip())
+            frame = row["frame"]
+            resp = row["response"].strip()
+            if not resp or resp.lower() in ("none", "error"):
+                continue
+            for comp in parse_components(resp):
+                index.setdefault(vid, {}).setdefault(comp, []).append(frame)
 
     with open(RESULTS_CSV, "w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=["video_id", "frames_with_components", "all_mentions"])
+        writer = csv.DictWriter(f, fieldnames=["video_id", "component", "frame_count", "frames"])
         writer.writeheader()
-        for vid in sorted(video_responses):
-            mentions = video_responses[vid]
-            writer.writerow({
-                "video_id": vid,
-                "frames_with_components": len(mentions),
-                "all_mentions": " | ".join(mentions),
-            })
+        for vid in sorted(index):
+            # sort components by how many frames they appeared in (most → least)
+            for comp, frames in sorted(index[vid].items(), key=lambda x: -len(x[1])):
+                writer.writerow({
+                    "video_id": vid,
+                    "component": comp,
+                    "frame_count": len(frames),
+                    "frames": " | ".join(frames),
+                })
 
-    print(f"\nResults saved → {RESULTS_CSV.relative_to(ROOT)}")
+    print(f"Results saved → {RESULTS_CSV.relative_to(ROOT)}")
 
 
 def main() -> None:
