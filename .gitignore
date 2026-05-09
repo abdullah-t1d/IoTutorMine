@@ -13,5 +13,6 @@ models/*.pt
 models/*.pth
 models/*.bin
 models/*.ckpt
+models/moondream2/
 
 uv.lock
