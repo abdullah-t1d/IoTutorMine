@@ -5,11 +5,9 @@ requires-python = ">=3.10"
 dependencies = [
     "yt-dlp",
     "mobileclip @ git+https://github.com/apple/ml-mobileclip.git",
-    "transformers",
-    "huggingface-hub",
     "imagehash",
     "Pillow",
-    "torch",
+    "ollama",
 ]
 
 [tool.setuptools.packages.find]

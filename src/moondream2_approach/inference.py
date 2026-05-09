@@ -1,17 +1,20 @@
 #!/usr/bin/env python3
 """
-Runs Moondream2 on deduplicated frames to extract IoT hardware components.
+Runs Moondream2 (via Ollama) on deduplicated frames to extract IoT hardware components.
 
 Pipeline per video:
   1. Load all 1fps frames from data/frames/{video_id}/
   2. pHash deduplication — skip frames too similar to the previous kept frame
-  3. Run Moondream2 on each unique frame
+  3. Run Moondream2 on each unique frame via Ollama
   4. Aggregate responses → per-video component list
 
 Resumable: already-processed frames are skipped on re-run.
 
+Requirements:
+    ollama serve          (must be running)
+    ollama pull moondream
+
 Usage:
-    python models/download_moondream.py
     python src/moondream2_approach/inference.py
 """
 
@@ -20,21 +23,19 @@ import sys
 from pathlib import Path
 
 import imagehash
-import torch
+import ollama
 from PIL import Image
-from transformers import AutoModelForCausalLM, AutoTokenizer
 
 # ── Paths ──────────────────────────────────────────────────────────────────────
 ROOT = Path(__file__).parents[2]
 FRAMES_DIR = ROOT / "data" / "frames"
-MODEL_DIR = ROOT / "models" / "moondream2"
 OUT_DIR = Path(__file__).parent
 VLM_RESPONSES_CSV = OUT_DIR / "vlm_responses.csv"
 RESULTS_CSV = OUT_DIR / "results.csv"
 
 # ── Config ─────────────────────────────────────────────────────────────────────
-PHASH_THRESHOLD = 10     # hamming distance; lower = stricter dedup (0–64)
-REVISION = "2025-01-09"
+MODEL = "moondream"
+PHASH_THRESHOLD = 10     # hamming distance; higher = fewer frames kept (0–64)
 
 PROMPT = (
     "List the electronic hardware components you can clearly see in this image. "
@@ -44,29 +45,15 @@ PROMPT = (
 )
 
 
-def load_model():
-    if not MODEL_DIR.exists() or not any(MODEL_DIR.iterdir()):
-        print(f"Model not found at {MODEL_DIR}. Run: python models/download_moondream.py")
+def check_ollama() -> None:
+    try:
+        models = [m.model for m in ollama.list().models]
+        if not any(MODEL in m for m in models):
+            print(f"'{MODEL}' not found. Run: ollama pull {MODEL}")
+            sys.exit(1)
+    except Exception:
+        print("Cannot reach Ollama. Run: ollama serve")
         sys.exit(1)
-
-    print("Loading Moondream2...")
-    if torch.backends.mps.is_available():
-        device = "mps"
-    elif torch.cuda.is_available():
-        device = "cuda"
-    else:
-        device = "cpu"
-
-    print(f"  Device: {device}")
-    tokenizer = AutoTokenizer.from_pretrained(str(MODEL_DIR), revision=REVISION)
-    model = AutoModelForCausalLM.from_pretrained(
-        str(MODEL_DIR),
-        revision=REVISION,
-        trust_remote_code=True,
-        torch_dtype=torch.float16 if device != "cpu" else torch.float32,
-    ).to(device)
-    model.eval()
-    return model, tokenizer
 
 
 def select_unique_frames(frame_paths: list[Path]) -> list[Path]:
@@ -94,10 +81,20 @@ def load_processed_frames() -> set:
     return processed
 
 
+def query_frame(image_path: Path) -> str:
+    response = ollama.chat(
+        model=MODEL,
+        messages=[{
+            "role": "user",
+            "content": PROMPT,
+            "images": [str(image_path)],
+        }]
+    )
+    return response["message"]["content"].strip()
+
+
 def process_video(
     video_id: str,
-    model,
-    tokenizer,
     processed: set,
     writer,
 ) -> None:
@@ -112,8 +109,7 @@ def process_video(
     remaining = [f for f in unique_frames if (video_id, f.name) not in processed]
 
     if not remaining:
-        kept = len(unique_frames)
-        print(f"[{video_id}] Already processed ({kept} unique frames), skipping.")
+        print(f"[{video_id}] Already processed ({len(unique_frames)} unique frames), skipping.")
         return
 
     print(
@@ -123,9 +119,7 @@ def process_video(
 
     for i, path in enumerate(remaining, 1):
         try:
-            image = Image.open(path).convert("RGB")
-            enc = model.encode_image(image)
-            response = model.answer_question(enc, PROMPT, tokenizer).strip()
+            response = query_frame(path)
         except Exception as e:
             print(f"  [{video_id}] {path.name} error: {e}", file=sys.stderr)
             response = "error"
@@ -137,8 +131,8 @@ def process_video(
         })
         processed.add((video_id, path.name))
 
-        if i % 10 == 0:
-            print(f"  [{video_id}] {i}/{len(remaining)} done")
+        if i % 10 == 0 or i == len(remaining):
+            print(f"  [{video_id}] {i}/{len(remaining)}")
 
     print(f"[{video_id}] Done.")
 
@@ -155,26 +149,27 @@ def aggregate_results() -> None:
                 video_responses.setdefault(vid, []).append(row["response"].strip())
 
     with open(RESULTS_CSV, "w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=["video_id", "frame_count", "all_mentions"])
+        writer = csv.DictWriter(f, fieldnames=["video_id", "frames_with_components", "all_mentions"])
         writer.writeheader()
         for vid in sorted(video_responses):
             mentions = video_responses[vid]
             writer.writerow({
                 "video_id": vid,
-                "frame_count": len(mentions),
+                "frames_with_components": len(mentions),
                 "all_mentions": " | ".join(mentions),
             })
 
-    print(f"Results saved → {RESULTS_CSV.relative_to(ROOT)}")
+    print(f"\nResults saved → {RESULTS_CSV.relative_to(ROOT)}")
 
 
 def main() -> None:
+    check_ollama()
+
     video_ids = sorted(d.name for d in FRAMES_DIR.iterdir() if d.is_dir())
     if not video_ids:
         print(f"No frame directories found in {FRAMES_DIR}")
         sys.exit(1)
 
-    model, tokenizer = load_model()
     processed = load_processed_frames()
 
     is_new = not VLM_RESPONSES_CSV.exists()
@@ -185,7 +180,7 @@ def main() -> None:
 
         for video_id in video_ids:
             try:
-                process_video(video_id, model, tokenizer, processed, writer)
+                process_video(video_id, processed, writer)
                 f.flush()
             except Exception as e:
                 print(f"[{video_id}] ERROR: {e}", file=sys.stderr)
