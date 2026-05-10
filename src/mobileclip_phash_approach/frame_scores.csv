@@ -1,28 +1,66 @@
 video_id,frame,component,score
-V01,0004.jpg,Arduino Uno blue microcontroller board with USB-B port and ATmega328,0.2927
-V01,0083.jpg,Arduino Uno blue microcontroller board with USB-B port and ATmega328,0.2847
-V01,0091.jpg,Arduino Uno blue microcontroller board with USB-B port and ATmega328,0.2888
-V01,0097.jpg,Arduino Uno blue microcontroller board with USB-B port and ATmega328,0.3176
-V01,0182.jpg,HC-SR04 ultrasonic distance sensor with two silver cylinders,0.2888
-V01,0198.jpg,HC-SR04 ultrasonic distance sensor with two silver cylinders,0.2812
-V03,0047.jpg,ESP32 small rectangular development board with WiFi antenna,0.2825
-V03,0059.jpg,white solderless breadboard with rows of holes,0.3165
-V03,0064.jpg,white solderless breadboard with rows of holes,0.2922
-V03,0066.jpg,white solderless breadboard with rows of holes,0.2896
-V03,0069.jpg,LED light emitting diode small colored through-hole component,0.3168
-V03,0081.jpg,white solderless breadboard with rows of holes,0.2953
-V03,0085.jpg,white solderless breadboard with rows of holes,0.3048
-V03,0091.jpg,white solderless breadboard with rows of holes,0.3063
-V03,0105.jpg,white solderless breadboard with rows of holes,0.2867
-V03,0233.jpg,white solderless breadboard with rows of holes,0.311
-V05,0076.jpg,DHT11 small blue temperature and humidity sensor module,0.3413
-V05,0119.jpg,DHT22 white temperature and humidity sensor module,0.3325
-V05,0146.jpg,DHT11 small blue temperature and humidity sensor module,0.2838
-V05,0157.jpg,DHT11 small blue temperature and humidity sensor module,0.2866
-V05,0187.jpg,white solderless breadboard with rows of holes,0.284
-V05,0189.jpg,white solderless breadboard with rows of holes,0.3094
-V05,0197.jpg,DHT11 small blue temperature and humidity sensor module,0.2861
-V06,0061.jpg,potentiometer rotary dial variable resistor,0.2801
-V06,0093.jpg,step-down voltage regulator module LM7805 or DC-DC converter,0.2812
-V06,0152.jpg,ESP8266 NodeMCU small WiFi module board,0.2815
-V07,0089.jpg,OLED 0.96 inch small white display module,0.292
+V01,0001.jpg,capacitor,0.2077
+V01,0004.jpg,Arduino Uno,0.3661
+V01,0005.jpg,IR sensor,0.2128
+V01,0010.jpg,buzzer,0.1904
+V01,0012.jpg,voltage regulator,0.2516
+V01,0013.jpg,IR sensor,0.2196
+V01,0015.jpg,servo motor,0.1774
+V01,0016.jpg,capacitor,0.2304
+V01,0023.jpg,HC-SR04 ultrasonic sensor,0.2193
+V01,0032.jpg,IR sensor,0.2417
+V01,0038.jpg,Arduino Uno,0.2751
+V01,0042.jpg,IR sensor,0.1676
+V01,0049.jpg,ESP8266,0.2026
+V01,0053.jpg,OLED display,0.1771
+V01,0055.jpg,IR sensor,0.1561
+V01,0068.jpg,OLED display,0.1916
+V01,0070.jpg,HC-SR04 ultrasonic sensor,0.2369
+V01,0072.jpg,HC-SR04 ultrasonic sensor,0.2922
+V01,0080.jpg,Arduino Uno,0.2778
+V01,0082.jpg,Arduino Uno,0.2857
+V01,0083.jpg,Arduino Uno,0.2873
+V01,0085.jpg,voltage regulator,0.2509
+V01,0088.jpg,Arduino Uno,0.3107
+V01,0091.jpg,Arduino Uno,0.3476
+V01,0093.jpg,voltage regulator,0.2528
+V01,0097.jpg,Arduino Uno,0.3571
+V01,0101.jpg,Arduino Uno,0.2663
+V01,0103.jpg,Arduino Uno,0.2061
+V01,0141.jpg,servo motor,0.1748
+V01,0142.jpg,OLED display,0.2272
+V01,0147.jpg,ESP32,0.1736
+V01,0160.jpg,IR sensor,0.1794
+V01,0162.jpg,Arduino Uno,0.2226
+V01,0165.jpg,OLED display,0.1996
+V01,0168.jpg,ESP8266,0.2268
+V01,0170.jpg,IR sensor,0.2613
+V01,0173.jpg,IR sensor,0.2585
+V01,0175.jpg,DHT11 sensor,0.1913
+V01,0180.jpg,Arduino Uno,0.3089
+V01,0182.jpg,HC-SR04 ultrasonic sensor,0.3246
+V01,0184.jpg,OLED display,0.2565
+V01,0186.jpg,ESP8266,0.2656
+V01,0188.jpg,IR sensor,0.2624
+V01,0190.jpg,jumper wires,0.1926
+V01,0193.jpg,DHT11 sensor,0.2291
+V01,0194.jpg,DHT11 sensor,0.2268
+V01,0197.jpg,OLED display,0.218
+V01,0198.jpg,servo motor,0.2883
+V01,0200.jpg,Arduino Uno,0.2893
+V01,0201.jpg,ESP32,0.2512
+V01,0203.jpg,Arduino Uno,0.288
+V01,0205.jpg,soil moisture sensor,0.2587
+V01,0208.jpg,Arduino Uno,0.2207
+V01,0210.jpg,ESP32,0.2194
+V01,0212.jpg,ESP8266,0.2341
+V01,0219.jpg,IR sensor,0.2241
+V01,0220.jpg,ESP8266,0.2648
+V01,0221.jpg,ESP32,0.2399
+V01,0223.jpg,IR sensor,0.2538
+V01,0234.jpg,IR sensor,0.1963
+V01,0235.jpg,Arduino Uno,0.2409
+V01,0239.jpg,ESP8266,0.2232
+V01,0243.jpg,IR sensor,0.2327
+V01,0244.jpg,IR sensor,0.2427
+V01,0245.jpg,LED,0.1865

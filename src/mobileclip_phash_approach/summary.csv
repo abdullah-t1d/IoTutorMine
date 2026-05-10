@@ -1,7 +1,2 @@
 video_id,components
-V01,none
-V02,none
-V03,white solderless breadboard with rows of holes
-V04,none
-V05,none
-V06,none
+V01,"Arduino Uno, IR sensor"

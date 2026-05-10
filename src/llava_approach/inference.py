@@ -33,16 +33,29 @@ FRAMES_DIR = ROOT / "data" / "frames"
 OUT_DIR = Path(__file__).parent
 VLM_RESPONSES_CSV = OUT_DIR / "vlm_responses.csv"
 RESULTS_CSV = OUT_DIR / "results.csv"
+SUMMARY_CSV = OUT_DIR / "summary.csv"
 
 # ── Config ─────────────────────────────────────────────────────────────────────
 MODEL = "llava"
 PHASH_THRESHOLD = 25    # higher = fewer frames processed (0–64)
 
+COMPONENTS = [
+    "Arduino Uno", "Arduino Mega 2560", "Raspberry Pi", "ESP32", "ESP8266",
+    "HC-SR04 ultrasonic sensor", "PIR motion sensor", "DHT11 sensor", "DHT22 sensor",
+    "IR sensor", "soil moisture sensor", "MQ-2 gas sensor",
+    "16x2 LCD display", "I2C LCD module", "OLED display",
+    "LED", "resistor", "potentiometer", "pushbutton", "capacitor", "buzzer",
+    "breadboard", "jumper wires", "USB cable",
+    "servo motor", "DC motor", "relay module", "L298N motor driver",
+]
+
+_component_list = "\n".join(f"- {c}" for c in COMPONENTS)
+
 PROMPT = (
-    "List the embedded hardware, electronic and IoT prototyping components visible in this image. "
-    "Exclude consumer electronics such as laptops, monitors, keyboards, and smartphones. "
-    "Component names only, one per line, no descriptions. "
-    "Reply with 'none' if no such components are visible."
+    "Which of the following IoT and electronics components are clearly visible in this image?\n\n"
+    f"{_component_list}\n\n"
+    "Reply with the exact component names from the list above, one per line.\n"
+    "Only include components you can clearly see. Reply with 'none' if none are visible."
 )
 
 
@@ -141,6 +154,33 @@ def process_video(video_id: str, processed: set, writer) -> None:
     print(f"[{video_id}] Done.")
 
 
+def append_video_summary(video_id: str) -> None:
+    """Collect unique components seen for this video and append one row to summary.csv."""
+    seen = set()
+    with open(VLM_RESPONSES_CSV, newline="", encoding="utf-8") as f:
+        for row in csv.DictReader(f):
+            if row["video_id"] != video_id:
+                continue
+            resp = row["response"].strip()
+            if not resp or resp.lower() in ("none", "error"):
+                continue
+            for comp in parse_components(resp):
+                seen.add(comp)
+
+    is_new = not SUMMARY_CSV.exists()
+    with open(SUMMARY_CSV, "a", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=["video_id", "components"])
+        if is_new:
+            writer.writeheader()
+        writer.writerow({
+            "video_id": video_id,
+            "components": ", ".join(sorted(seen)) if seen else "none",
+        })
+
+    label = ", ".join(sorted(seen)) if seen else "none"
+    print(f"[{video_id}] Summary: {label}")
+
+
 def aggregate_results() -> None:
     """Build a per-video, per-component frame index and write to results.csv."""
     index: dict[str, dict[str, list[str]]] = {}
@@ -188,6 +228,7 @@ def main() -> None:
             try:
                 process_video(video_id, processed, writer)
                 f.flush()
+                append_video_summary(video_id)
             except Exception as e:
                 print(f"[{video_id}] ERROR: {e}", file=sys.stderr)
 
