@@ -35,47 +35,46 @@ SUMMARY_CSV = OUT_DIR / "summary.csv"
 # ── Config ─────────────────────────────────────────────────────────────────────
 BATCH_SIZE = 32
 PHASH_THRESHOLD = 25     # hamming distance cutoff for deduplication (0–64)
-SCORE_THRESHOLD = 0.28   # min cosine similarity to accept top-1 label
 FREQ_THRESHOLD = 0.10    # component must appear in >10% of unique frames
 
 # ── Component taxonomy (derived from V01–V10 ground truth + common IoT kit) ────
 # Labels are written to be visually descriptive for image-text similarity.
 COMPONENTS = [
-    # ── Microcontroller boards ──────────────────────────────────────────────
-    "Arduino Uno blue microcontroller board with USB-B port and ATmega328",
-    "Arduino Mega 2560 long blue microcontroller board with many pins",
-    "Raspberry Pi green single-board computer with GPIO header",
-    "ESP32 small rectangular development board with WiFi antenna",
-    "ESP8266 NodeMCU small WiFi module board",
-    # ── Sensors ─────────────────────────────────────────────────────────────
-    "HC-SR04 ultrasonic distance sensor with two silver cylinders",
-    "HC-SR501 white dome PIR passive infrared motion sensor",
-    "DHT11 small blue temperature and humidity sensor module",
-    "DHT22 white temperature and humidity sensor module",
-    "IR infrared obstacle avoidance sensor module",
-    "soil moisture sensor probe with two metal prongs",
-    "MQ-2 gas sensor module with metal mesh dome",
-    # ── Displays ────────────────────────────────────────────────────────────
-    "1602 16x2 LCD character display module blue or green",
-    "I2C LCD interface adapter module small PCB attached to LCD",
-    "OLED 0.96 inch small white display module",
-    # ── Passive components ───────────────────────────────────────────────────
-    "LED light emitting diode small colored through-hole component",
-    "resistor small axial component with colored bands",
-    "potentiometer rotary dial variable resistor",
-    "tactile pushbutton small square momentary switch",
-    "capacitor cylindrical or disc ceramic component",
-    "buzzer small cylindrical piezo buzzer",
-    # ── Prototyping ──────────────────────────────────────────────────────────
-    "white solderless breadboard with rows of holes",
-    "jumper wires colorful male-to-male or male-to-female cables",
-    "USB cable A to B or A to micro-USB connector",
-    # ── Actuators & modules ──────────────────────────────────────────────────
-    "servo motor small hobby servo with plastic horn",
-    "DC motor small cylindrical electric motor",
-    "relay module blue rectangular PCB with electromagnetic relay",
-    "L298N motor driver module red dual H-bridge board",
-    "step-down voltage regulator module LM7805 or DC-DC converter",
+    # Boards
+    "Arduino Uno",
+    "Arduino Mega 2560",
+    "Raspberry Pi",
+    "ESP32",
+    "ESP8266",
+    # Sensors
+    "HC-SR04 ultrasonic sensor",
+    "PIR motion sensor",
+    "DHT11 sensor",
+    "DHT22 sensor",
+    "IR sensor",
+    "soil moisture sensor",
+    "MQ-2 gas sensor",
+    # Displays
+    "16x2 LCD display",
+    "I2C LCD module",
+    "OLED display",
+    # Passive components
+    "LED",
+    "resistor",
+    "potentiometer",
+    "pushbutton",
+    "capacitor",
+    "buzzer",
+    # Prototyping
+    "breadboard",
+    "jumper wires",
+    "USB cable",
+    # Actuators & modules
+    "servo motor",
+    "DC motor",
+    "relay module",
+    "L298N motor driver",
+    "voltage regulator",
 ]
 
 
@@ -175,13 +174,12 @@ def process_video(
         for path, scores in zip(valid_paths, similarities):
             top1_idx = scores.argmax().item()
             top1_score = scores[top1_idx].item()
-            if top1_score >= SCORE_THRESHOLD:
-                writer.writerow({
-                    "video_id": video_id,
-                    "frame": path.name,
-                    "component": COMPONENTS[top1_idx],
-                    "score": round(top1_score, 4),
-                })
+            writer.writerow({
+                "video_id": video_id,
+                "frame": path.name,
+                "component": COMPONENTS[top1_idx],
+                "score": round(top1_score, 4),
+            })
             processed.add((video_id, path.name))
 
         if (i // BATCH_SIZE + 1) % 5 == 0 or i + BATCH_SIZE >= len(remaining):

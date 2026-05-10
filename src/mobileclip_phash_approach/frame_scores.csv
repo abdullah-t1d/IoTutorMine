@@ -1,0 +1,28 @@
+video_id,frame,component,score
+V01,0004.jpg,Arduino Uno blue microcontroller board with USB-B port and ATmega328,0.2927
+V01,0083.jpg,Arduino Uno blue microcontroller board with USB-B port and ATmega328,0.2847
+V01,0091.jpg,Arduino Uno blue microcontroller board with USB-B port and ATmega328,0.2888
+V01,0097.jpg,Arduino Uno blue microcontroller board with USB-B port and ATmega328,0.3176
+V01,0182.jpg,HC-SR04 ultrasonic distance sensor with two silver cylinders,0.2888
+V01,0198.jpg,HC-SR04 ultrasonic distance sensor with two silver cylinders,0.2812
+V03,0047.jpg,ESP32 small rectangular development board with WiFi antenna,0.2825
+V03,0059.jpg,white solderless breadboard with rows of holes,0.3165
+V03,0064.jpg,white solderless breadboard with rows of holes,0.2922
+V03,0066.jpg,white solderless breadboard with rows of holes,0.2896
+V03,0069.jpg,LED light emitting diode small colored through-hole component,0.3168
+V03,0081.jpg,white solderless breadboard with rows of holes,0.2953
+V03,0085.jpg,white solderless breadboard with rows of holes,0.3048
+V03,0091.jpg,white solderless breadboard with rows of holes,0.3063
+V03,0105.jpg,white solderless breadboard with rows of holes,0.2867
+V03,0233.jpg,white solderless breadboard with rows of holes,0.311
+V05,0076.jpg,DHT11 small blue temperature and humidity sensor module,0.3413
+V05,0119.jpg,DHT22 white temperature and humidity sensor module,0.3325
+V05,0146.jpg,DHT11 small blue temperature and humidity sensor module,0.2838
+V05,0157.jpg,DHT11 small blue temperature and humidity sensor module,0.2866
+V05,0187.jpg,white solderless breadboard with rows of holes,0.284
+V05,0189.jpg,white solderless breadboard with rows of holes,0.3094
+V05,0197.jpg,DHT11 small blue temperature and humidity sensor module,0.2861
+V06,0061.jpg,potentiometer rotary dial variable resistor,0.2801
+V06,0093.jpg,step-down voltage regulator module LM7805 or DC-DC converter,0.2812
+V06,0152.jpg,ESP8266 NodeMCU small WiFi module board,0.2815
+V07,0089.jpg,OLED 0.96 inch small white display module,0.292
