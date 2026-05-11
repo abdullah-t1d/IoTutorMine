@@ -64,7 +64,7 @@ const filteredVideos = computed(() => {
   return videos.filter(v =>
     v.title.toLowerCase().includes(q) ||
     v.tags.some(t => t.toLowerCase().includes(q)) ||
-    v.components.some(c => c.toLowerCase().includes(q)) ||
+    v.components.some(c => c.name.toLowerCase().includes(q)) ||
     v.creator.toLowerCase().includes(q)
   )
 })

@@ -75,12 +75,26 @@
             <thead>
               <tr>
                 <th>Component</th>
+                <th>Status</th>
               </tr>
             </thead>
             <tbody>
-              <tr v-for="comp in video.components" :key="comp">
-                <td>{{ comp }}</td>
-              </tr>
+              <template v-for="comp in video.components.filter(c => c.status === 'USED')" :key="comp.name">
+                <tr>
+                  <td>{{ comp.name }}</td>
+                  <td><span class="status-badge status-badge--used">Used</span></td>
+                </tr>
+                <tr
+                  v-for="alt in video.components.filter(c => c.status === 'ALTERNATIVE' && c.alternativeTo === comp.name)"
+                  :key="alt.name"
+                  class="alt-row"
+                >
+                  <td>
+                    <span class="alt-branch">↳</span> {{ alt.name }}
+                  </td>
+                  <td><span class="status-badge status-badge--alt">Alternative</span></td>
+                </tr>
+              </template>
             </tbody>
           </table>
         </div>
@@ -289,14 +303,32 @@ const video = computed(() => videos.find(v => v.id === Number(route.params.id)))
   border-bottom: none;
 }
 
-.type-badge {
+.status-badge {
   display: inline-block;
   padding: 2px 10px;
   font-size: var(--font-size-xs);
   font-weight: 500;
-  background: var(--color-accent-light);
-  color: var(--color-accent);
   border-radius: 100px;
+}
+
+.status-badge--used {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.status-badge--alt {
+  background: #fff3e0;
+  color: #e65100;
+}
+
+.alt-row td {
+  background: var(--color-surface-hover, #f9fafb);
+}
+
+.alt-branch {
+  color: var(--color-text-muted);
+  margin-right: 4px;
+  font-weight: 600;
 }
 
 /* --- Ask Section --- */

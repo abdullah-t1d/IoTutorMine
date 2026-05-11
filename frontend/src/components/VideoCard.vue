@@ -17,14 +17,14 @@
 
       <div class="video-card__components">
         <span
-          v-for="comp in video.components.slice(0, 3)"
-          :key="comp"
+          v-for="comp in video.components.filter(c => c.status === 'USED').slice(0, 3)"
+          :key="comp.name"
           class="component-badge"
         >
-          {{ comp }}
+          {{ comp.name }}
         </span>
-        <span v-if="video.components.length > 3" class="component-badge component-badge--more">
-          +{{ video.components.length - 3 }}
+        <span v-if="video.components.filter(c => c.status === 'USED').length > 3" class="component-badge component-badge--more">
+          +{{ video.components.filter(c => c.status === 'USED').length - 3 }}
         </span>
       </div>
     </div>

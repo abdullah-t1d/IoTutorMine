@@ -4,7 +4,6 @@ export const videos = [
     title: "How To Use Ultrasonic Sensors with Arduino! + Project Idea!",
     thumbnail: "https://img.youtube.com/vi/KGwtit2bFyo/hqdefault.jpg",
     durationRange: "10-15",
-    commentCount: 6,
     creator: "Robonyx",
     publishDate: "2023-05-10",
     searchQuery: "Ultrasonic Sensor Arduino",
@@ -13,11 +12,11 @@ export const videos = [
     description: "A quick guide on how ultrasonic sensors work, how to use them with Arduino & a small project idea.",
     youtubeId: "KGwtit2bFyo",
     components: [
-      "Arduino Uno",
-      "RGBDuino",
-      "Ultrasonic Sensor",
-      "Servo Motor",
-      "Jumper Wires"
+      { name: "Arduino Uno", status: "USED" },
+      { name: "RGBDuino", status: "ALTERNATIVE", alternativeTo: "Arduino Uno" },
+      { name: "Ultrasonic Sensor", status: "USED" },
+      { name: "Servo Motor", status: "USED" },
+      { name: "Jumper Wires", status: "USED" }
     ]
   },
   {
@@ -25,7 +24,6 @@ export const videos = [
     title: "Arduino Tutorial: LED Sequential Control - Beginner Project",
     thumbnail: "https://img.youtube.com/vi/e1FVSpkw6q4/hqdefault.jpg",
     durationRange: "5-10",
-    commentCount: 4,
     creator: "Programming Electronics Academy",
     publishDate: "2015-08-20",
     searchQuery: "Arduino LED Sequential",
@@ -34,16 +32,16 @@ export const videos = [
     description: "Learn how to create a sequential LED control pattern using Arduino. A great beginner project.",
     youtubeId: "e1FVSpkw6q4",
     components: [
-      "Arduino Uno",
-      "Arduino Board",
-      "Breadboard",
-      "Jumper Wires",
-      "USB Cable",
-      "Blue LED",
-      "Red LED",
-      "Green LED",
-      "220 Ohm Resistor",
-      "Resistor"
+      { name: "Arduino Uno", status: "USED" },
+      { name: "Arduino Board", status: "ALTERNATIVE", alternativeTo: "Arduino Uno" },
+      { name: "Breadboard", status: "USED" },
+      { name: "Jumper Wires", status: "USED" },
+      { name: "USB Cable", status: "USED" },
+      { name: "Blue LED", status: "USED" },
+      { name: "Red LED", status: "USED" },
+      { name: "Green LED", status: "USED" },
+      { name: "220 Ohm Resistor", status: "USED" },
+      { name: "Resistor", status: "ALTERNATIVE", alternativeTo: "220 Ohm Resistor" }
     ]
   },
   {
@@ -51,7 +49,6 @@ export const videos = [
     title: "DHT11 Temperature & Humidity Sensor with Arduino - Tutorial",
     thumbnail: "https://img.youtube.com/vi/OogldLc9uYc/hqdefault.jpg",
     durationRange: "10-15",
-    commentCount: 8,
     creator: "Surtrtech",
     publishDate: "2018-11-05",
     searchQuery: "DHT11 Arduino Tutorial",
@@ -60,13 +57,13 @@ export const videos = [
     description: "Read temperature and humidity with the DHT11 module and an Arduino UNO.",
     youtubeId: "OogldLc9uYc",
     components: [
-      "Arduino Uno",
-      "Arduino Mini",
-      "Arduino Micro",
-      "DHT11 Sensor",
-      "Breadboard",
-      "Jumper Wires",
-      "USB Cable"
+      { name: "Arduino Uno", status: "USED" },
+      { name: "Arduino Mini", status: "ALTERNATIVE", alternativeTo: "Arduino Uno" },
+      { name: "Arduino Micro", status: "ALTERNATIVE", alternativeTo: "Arduino Uno" },
+      { name: "DHT11 Sensor", status: "USED" },
+      { name: "Breadboard", status: "USED" },
+      { name: "Jumper Wires", status: "USED" },
+      { name: "USB Cable", status: "USED" }
     ]
   },
   {
@@ -74,7 +71,6 @@ export const videos = [
     title: "Getting Started With DHT11 Temperature and Humidity Sensor: Arduino Projects For Beginners",
     thumbnail: "https://img.youtube.com/vi/PxQruKtumvg/hqdefault.jpg",
     durationRange: "15-20",
-    commentCount: 5,
     creator: "Techno Surge",
     publishDate: "2022-03-14",
     searchQuery: "DHT11 Arduino Beginner",
@@ -83,16 +79,16 @@ export const videos = [
     description: "Getting started with the DHT11 Humidity and Temperature sensor. An Arduino project for beginners.",
     youtubeId: "PxQruKtumvg",
     components: [
-      "Elegoo Mega 2560",
-      "DHT11 Sensor",
-      "10k Potentiometer",
-      "10k Ohm Resistor",
-      "16x2 LCD Module",
-      "Jumper Wires",
-      "Breadboard",
-      "USB Cable",
-      "4-pin DHT11 Sensor",
-      "DHT22 Sensor"
+      { name: "Elegoo Mega 2560", status: "USED" },
+      { name: "DHT11 Sensor", status: "USED" },
+      { name: "10k Potentiometer", status: "USED" },
+      { name: "10k Ohm Resistor", status: "USED" },
+      { name: "16x2 LCD Module", status: "USED" },
+      { name: "Jumper Wires", status: "USED" },
+      { name: "Breadboard", status: "USED" },
+      { name: "USB Cable", status: "USED" },
+      { name: "4-pin DHT11 Sensor", status: "ALTERNATIVE", alternativeTo: "DHT11 Sensor" },
+      { name: "DHT22 Sensor", status: "ALTERNATIVE", alternativeTo: "DHT11 Sensor" }
     ]
   },
   {
@@ -100,7 +96,6 @@ export const videos = [
     title: "How to Use a PIR Sensor with Arduino (Lesson #26)",
     thumbnail: "https://img.youtube.com/vi/3gj_68ywod4/hqdefault.jpg",
     durationRange: "20-30",
-    commentCount: 10,
     creator: "Programming Electronics Academy",
     publishDate: "2021-06-15",
     searchQuery: "PIR Sensor Arduino",
@@ -109,13 +104,13 @@ export const videos = [
     description: "Learn to use a passive infrared (PIR) sensor to add motion detection to your Arduino projects.",
     youtubeId: "3gj_68ywod4",
     components: [
-      "PIR Sensor",
-      "Arduino Uno",
-      "LED",
-      "220 Ohm Resistor",
-      "Breadboard",
-      "Jumper Wires",
-      "3-wire JST Cable"
+      { name: "PIR Sensor", status: "USED" },
+      { name: "Arduino Uno", status: "USED" },
+      { name: "LED", status: "USED" },
+      { name: "220 Ohm Resistor", status: "USED" },
+      { name: "Breadboard", status: "USED" },
+      { name: "Jumper Wires", status: "USED" },
+      { name: "3-wire JST Cable", status: "ALTERNATIVE", alternativeTo: "Jumper Wires" }
     ]
   },
   {
@@ -123,7 +118,6 @@ export const videos = [
     title: "Motion Detection with Arduino in 3 Minutes! Using HC-SR501 Sensor",
     thumbnail: "https://img.youtube.com/vi/CT4iyc1sFHI/hqdefault.jpg",
     durationRange: "3-5",
-    commentCount: 3,
     creator: "ToMo",
     publishDate: "2023-09-01",
     searchQuery: "HC-SR501 Arduino Motion",
@@ -132,13 +126,13 @@ export const videos = [
     description: "Quick 3-minute guide to motion detection using the HC-SR501 PIR sensor with Arduino.",
     youtubeId: "CT4iyc1sFHI",
     components: [
-      "PIR Sensor",
-      "Arduino Uno",
-      "LED",
-      "220 Ohm Resistor",
-      "Breadboard",
-      "Jumper Wires",
-      "USB Cable"
+      { name: "PIR Sensor", status: "USED" },
+      { name: "Arduino Uno", status: "USED" },
+      { name: "LED", status: "USED" },
+      { name: "220 Ohm Resistor", status: "USED" },
+      { name: "Breadboard", status: "USED" },
+      { name: "Jumper Wires", status: "USED" },
+      { name: "USB Cable", status: "USED" }
     ]
   },
   {
@@ -146,7 +140,6 @@ export const videos = [
     title: "How to Use a PIR Sensor with Arduino for Motion Detection",
     thumbnail: "https://img.youtube.com/vi/giIMy18D2lY/hqdefault.jpg",
     durationRange: "10-15",
-    commentCount: 5,
     creator: "Circuit Digest",
     publishDate: "2023-07-20",
     searchQuery: "PIR Arduino Motion Detection",
@@ -155,12 +148,12 @@ export const videos = [
     description: "Learn how to use a Passive Infrared (PIR) sensor with Arduino to detect motion and trigger actions.",
     youtubeId: "giIMy18D2lY",
     components: [
-      "Arduino Uno",
-      "PIR Sensor",
-      "LED",
-      "220 Ohm Resistor",
-      "Breadboard",
-      "Jumper Wires"
+      { name: "Arduino Uno", status: "USED" },
+      { name: "PIR Sensor", status: "USED" },
+      { name: "LED", status: "USED" },
+      { name: "220 Ohm Resistor", status: "USED" },
+      { name: "Breadboard", status: "USED" },
+      { name: "Jumper Wires", status: "USED" }
     ]
   },
   {
@@ -168,7 +161,6 @@ export const videos = [
     title: "How to Use an LCD Screen with an Arduino (Lesson #21)",
     thumbnail: "https://img.youtube.com/vi/s_-nIgo71_w/hqdefault.jpg",
     durationRange: "20-30",
-    commentCount: 12,
     creator: "Programming Electronics Academy",
     publishDate: "2021-04-10",
     searchQuery: "Arduino LCD Screen",
@@ -177,14 +169,14 @@ export const videos = [
     description: "How to use a 1602 LCD screen with parallel communication and the Arduino LiquidCrystal Library.",
     youtubeId: "s_-nIgo71_w",
     components: [
-      "16x2 LCD Module",
-      "Arduino Uno",
-      "Potentiometer",
-      "220 Ohm Resistor",
-      "Breadboard",
-      "Jumper Wires",
-      "Button",
-      "Male Header Pins"
+      { name: "16x2 LCD Module", status: "USED" },
+      { name: "Arduino Uno", status: "USED" },
+      { name: "Potentiometer", status: "USED" },
+      { name: "220 Ohm Resistor", status: "USED" },
+      { name: "Breadboard", status: "USED" },
+      { name: "Jumper Wires", status: "USED" },
+      { name: "Button", status: "USED" },
+      { name: "Male Header Pins", status: "USED" }
     ]
   },
   {
@@ -192,7 +184,6 @@ export const videos = [
     title: "How To Connect An LCD Display To Arduino (Elegoo Mega 2560 Lesson 22)",
     thumbnail: "https://img.youtube.com/vi/dpoBwmuE2QE/hqdefault.jpg",
     durationRange: "15-20",
-    commentCount: 7,
     creator: "Programming Electronics Academy",
     publishDate: "2020-10-28",
     searchQuery: "Arduino LCD Display Elegoo",
@@ -201,12 +192,12 @@ export const videos = [
     description: "Learn how to connect an LCD display to Arduino, walking through the Elegoo Mega 2560 Project Lesson 22.",
     youtubeId: "dpoBwmuE2QE",
     components: [
-      "Elegoo Mega 2560",
-      "1602A LCD Module",
-      "10k Potentiometer",
-      "Breadboard",
-      "Jumper Wires",
-      "USB Cable"
+      { name: "Elegoo Mega 2560", status: "USED" },
+      { name: "1602A LCD Module", status: "USED" },
+      { name: "10k Potentiometer", status: "USED" },
+      { name: "Breadboard", status: "USED" },
+      { name: "Jumper Wires", status: "USED" },
+      { name: "USB Cable", status: "USED" }
     ]
   },
   {
@@ -214,7 +205,6 @@ export const videos = [
     title: "How to Use I2C LCD with Arduino | Very Easy Arduino LCD I2C Tutorial",
     thumbnail: "https://img.youtube.com/vi/CvqHkXeXN3M/hqdefault.jpg",
     durationRange: "10-15",
-    commentCount: 9,
     creator: "Electronic Clinic",
     publishDate: "2021-02-15",
     searchQuery: "Arduino I2C LCD Tutorial",
@@ -223,12 +213,12 @@ export const videos = [
     description: "Very easy Arduino LCD I2C tutorial for 16x2 and 20x4 displays.",
     youtubeId: "CvqHkXeXN3M",
     components: [
-      "Arduino Uno",
-      "I2C LCD Interface Module",
-      "16x2 LCD Module",
-      "20x4 LCD Screen",
-      "Jumper Wires",
-      "USB Cable"
+      { name: "Arduino Uno", status: "USED" },
+      { name: "I2C LCD Interface Module", status: "USED" },
+      { name: "16x2 LCD Module", status: "USED" },
+      { name: "20x4 LCD Screen", status: "ALTERNATIVE", alternativeTo: "16x2 LCD Module" },
+      { name: "Jumper Wires", status: "USED" },
+      { name: "USB Cable", status: "USED" }
     ]
   },
   {
@@ -236,7 +226,6 @@ export const videos = [
     title: "Raspberry Pi Ultrasonic Sensor | Raspberry Pi 5 Projects Beginner Friendly",
     thumbnail: "https://img.youtube.com/vi/diKLjxpRKcU/hqdefault.jpg",
     durationRange: "10-20",
-    commentCount: 4,
     creator: "Raspberry Pi Projects",
     publishDate: "2024-01-12",
     searchQuery: "Raspberry Pi Ultrasonic Sensor",
@@ -245,12 +234,12 @@ export const videos = [
     description: "Build a Distance-Based LED Alert with Raspberry Pi 5, HC-SR04 Ultrasonic Sensor & Python.",
     youtubeId: "diKLjxpRKcU",
     components: [
-      "Raspberry Pi 5",
-      "Ultrasonic Sensor",
-      "Blue LED",
-      "330 Ohm Resistor",
-      "Jumper Wires",
-      "Breadboard"
+      { name: "Raspberry Pi 5", status: "USED" },
+      { name: "Ultrasonic Sensor", status: "USED" },
+      { name: "Blue LED", status: "USED" },
+      { name: "330 Ohm Resistor", status: "USED" },
+      { name: "Jumper Wires", status: "USED" },
+      { name: "Breadboard", status: "USED" }
     ]
   },
   {
@@ -258,7 +247,6 @@ export const videos = [
     title: "Raspberry Pi 5 Tutorial - LCD1602 I2C",
     thumbnail: "https://img.youtube.com/vi/V8J33fvCIUs/hqdefault.jpg",
     durationRange: "10-15",
-    commentCount: 3,
     creator: "Raspberry Pi Tutorials",
     publishDate: "2024-02-05",
     searchQuery: "Raspberry Pi 5 LCD1602 I2C",
@@ -267,11 +255,11 @@ export const videos = [
     description: "How to connect the LCD1602 module to the Raspberry Pi 5 using I2C protocol.",
     youtubeId: "V8J33fvCIUs",
     components: [
-      "16x2 LCD Module",
-      "I2C LCD Interface Module",
-      "Raspberry Pi 5",
-      "USB Cable",
-      "Jumper Wires"
+      { name: "16x2 LCD Module", status: "USED" },
+      { name: "I2C LCD Interface Module", status: "USED" },
+      { name: "Raspberry Pi 5", status: "USED" },
+      { name: "USB Cable", status: "USED" },
+      { name: "Jumper Wires", status: "USED" }
     ]
   },
   {
@@ -279,7 +267,6 @@ export const videos = [
     title: "Raspberry Pi Tutorial (Model B+) - Using a Breadboard and LEDs",
     thumbnail: "https://img.youtube.com/vi/6Hau75Zkpj4/hqdefault.jpg",
     durationRange: "10-15",
-    commentCount: 6,
     creator: "ETA PRIME",
     publishDate: "2014-12-10",
     searchQuery: "Raspberry Pi Breadboard LED",
@@ -288,13 +275,13 @@ export const videos = [
     description: "How to turn on/off an LED using the GPIO pins on your Raspberry Pi Model B+.",
     youtubeId: "6Hau75Zkpj4",
     components: [
-      "Raspberry Pi 5",
-      "Breadboard",
-      "Jumper Wires",
-      "Green LED",
-      "100 Ohm Resistor",
-      "50 Ohm Resistor",
-      "SD Card"
+      { name: "Raspberry Pi 5", status: "USED" },
+      { name: "Breadboard", status: "USED" },
+      { name: "Jumper Wires", status: "USED" },
+      { name: "Green LED", status: "USED" },
+      { name: "100 Ohm Resistor", status: "USED" },
+      { name: "50 Ohm Resistor", status: "USED" },
+      { name: "SD Card", status: "USED" }
     ]
   },
   {
@@ -302,7 +289,6 @@ export const videos = [
     title: "Raspberry Pi DHT11 DHT22 Temperature and Humidity Sensor",
     thumbnail: "https://img.youtube.com/vi/GsG1OClojOk/hqdefault.jpg",
     durationRange: "15-20",
-    commentCount: 8,
     creator: "The Geek Pub",
     publishDate: "2020-06-18",
     searchQuery: "Raspberry Pi DHT11 DHT22",
@@ -311,13 +297,13 @@ export const videos = [
     description: "How to use the DHT11 or DHT22 Temperature and Humidity sensor with Raspberry Pi.",
     youtubeId: "GsG1OClojOk",
     components: [
-      "Raspberry Pi 5",
-      "DHT11 Sensor",
-      "DHT22 Sensor",
-      "Breadboard",
-      "Breakout Cable",
-      "USB Cable",
-      "Jumper Wires"
+      { name: "Raspberry Pi 5", status: "USED" },
+      { name: "DHT11 Sensor", status: "USED" },
+      { name: "DHT22 Sensor", status: "ALTERNATIVE", alternativeTo: "DHT11 Sensor" },
+      { name: "Breadboard", status: "USED" },
+      { name: "Breakout Cable", status: "USED" },
+      { name: "USB Cable", status: "USED" },
+      { name: "Jumper Wires", status: "USED" }
     ]
   },
   {
@@ -325,7 +311,6 @@ export const videos = [
     title: "Raspberry Pi with DHT11 | Humidity and Temperature Sensor Monitoring",
     thumbnail: "https://img.youtube.com/vi/iodFalI3q1k/hqdefault.jpg",
     durationRange: "10-20",
-    commentCount: 5,
     creator: "Knowledge Forge",
     publishDate: "2021-09-25",
     searchQuery: "Raspberry Pi DHT11 Monitoring",
@@ -334,10 +319,10 @@ export const videos = [
     description: "Guide on how to monitor Humidity & Temperature with Raspberry Pi using DHT11 or DHT22.",
     youtubeId: "iodFalI3q1k",
     components: [
-      "DHT11 Sensor",
-      "Raspberry Pi 3B+",
-      "Jumper Wires",
-      "Power Supply"
+      { name: "DHT11 Sensor", status: "USED" },
+      { name: "Raspberry Pi 3B+", status: "USED" },
+      { name: "Jumper Wires", status: "USED" },
+      { name: "Power Supply", status: "USED" }
     ]
   },
   {
@@ -345,7 +330,6 @@ export const videos = [
     title: "How to Use a PIR Motion Sensor with Raspberry Pi",
     thumbnail: "https://img.youtube.com/vi/Tw0mG4YtsZk/hqdefault.jpg",
     durationRange: "10-15",
-    commentCount: 7,
     creator: "ETA PRIME",
     publishDate: "2015-01-20",
     searchQuery: "Raspberry Pi PIR Sensor",
@@ -354,12 +338,12 @@ export const videos = [
     description: "How to wire a PIR sensor into a breadboard using the Raspberry Pi GPIO pins for motion detection.",
     youtubeId: "Tw0mG4YtsZk",
     components: [
-      "PIR Sensor",
-      "Green LED",
-      "Raspberry Pi 5",
-      "Breadboard",
-      "Jumper Wires",
-      "Resistor"
+      { name: "PIR Sensor", status: "USED" },
+      { name: "Green LED", status: "USED" },
+      { name: "Raspberry Pi 5", status: "USED" },
+      { name: "Breadboard", status: "USED" },
+      { name: "Jumper Wires", status: "USED" },
+      { name: "Resistor", status: "USED" }
     ]
   },
   {
@@ -367,7 +351,6 @@ export const videos = [
     title: "How To Set Up A GPIO Screen For Raspberry Pi | Waveshare 3.5 Inch Touch LCD",
     thumbnail: "https://img.youtube.com/vi/vCAGzLGTUk4/hqdefault.jpg",
     durationRange: "10-15",
-    commentCount: 4,
     creator: "Core Electronics",
     publishDate: "2020-03-12",
     searchQuery: "Raspberry Pi GPIO Screen",
@@ -376,15 +359,15 @@ export const videos = [
     description: "Set up your own GPIO screen for Raspberry Pi using the Waveshare 3.5 Inch Touch LCD.",
     youtubeId: "vCAGzLGTUk4",
     components: [
-      "3.5 Inch LCD Display",
-      "Raspberry Pi 4",
-      "Micro SD Card",
-      "Power Supply",
-      "Monitor",
-      "Keyboard",
-      "Mouse",
-      "HDMI Cord",
-      "Stylus"
+      { name: "3.5 Inch LCD Display", status: "USED" },
+      { name: "Raspberry Pi 4", status: "USED" },
+      { name: "Micro SD Card", status: "USED" },
+      { name: "Power Supply", status: "USED" },
+      { name: "Monitor", status: "USED" },
+      { name: "Keyboard", status: "USED" },
+      { name: "Mouse", status: "USED" },
+      { name: "HDMI Cord", status: "USED" },
+      { name: "Stylus", status: "USED" }
     ]
   },
   {
@@ -392,7 +375,6 @@ export const videos = [
     title: "PiicoDev RFID Module | Guide for Raspberry Pi",
     thumbnail: "https://img.youtube.com/vi/rRdC7kj-YHo/hqdefault.jpg",
     durationRange: "10-15",
-    commentCount: 3,
     creator: "Core Electronics",
     publishDate: "2022-08-15",
     searchQuery: "PiicoDev RFID Raspberry Pi",
@@ -401,12 +383,12 @@ export const videos = [
     description: "Getting started with using a PiicoDev RFID Module with Raspberry Pi.",
     youtubeId: "rRdC7kj-YHo",
     components: [
-      "Raspberry Pi 4",
-      "PiicoDev RFID Module",
-      "PiicoDev Adapter for Raspberry Pi",
-      "PiicoDev Cable",
-      "RFID Tag (NTAG213)",
-      "RFID Tag (MIFARE classic)"
+      { name: "Raspberry Pi 4", status: "USED" },
+      { name: "PiicoDev RFID Module", status: "USED" },
+      { name: "PiicoDev Adapter for Raspberry Pi", status: "USED" },
+      { name: "PiicoDev Cable", status: "USED" },
+      { name: "RFID Tag (NTAG213)", status: "USED" },
+      { name: "RFID Tag (MIFARE classic)", status: "ALTERNATIVE", alternativeTo: "RFID Tag (NTAG213)" }
     ]
   },
   {
@@ -414,7 +396,6 @@ export const videos = [
     title: "How to Set up the RC522 to Work with a Raspberry Pi",
     thumbnail: "https://img.youtube.com/vi/n-XPS0eGjG0/hqdefault.jpg",
     durationRange: "15-20",
-    commentCount: 6,
     creator: "Explaining Computers",
     publishDate: "2023-02-10",
     searchQuery: "RC522 RFID Raspberry Pi",
@@ -423,12 +404,12 @@ export const videos = [
     description: "Setting up the RC522 RFID module to work with a Raspberry Pi using SPI communication.",
     youtubeId: "n-XPS0eGjG0",
     components: [
-      "Raspberry Pi",
-      "RC522 RFID Reader",
-      "RFID Tag",
-      "Display/Screen",
-      "Jumper Wires",
-      "Breadboard"
+      { name: "Raspberry Pi", status: "USED" },
+      { name: "RC522 RFID Reader", status: "USED" },
+      { name: "RFID Tag", status: "USED" },
+      { name: "Display/Screen", status: "USED" },
+      { name: "Jumper Wires", status: "USED" },
+      { name: "Breadboard", status: "ALTERNATIVE", alternativeTo: "Jumper Wires" }
     ]
   },
   {
@@ -436,7 +417,6 @@ export const videos = [
     title: "Raspberry Pi with ANY Servo Motor | Full Tutorial",
     thumbnail: "https://img.youtube.com/vi/g1eMMIUmh6E/hqdefault.jpg",
     durationRange: "15-20",
-    commentCount: 8,
     creator: "Robotic Brains",
     publishDate: "2022-05-30",
     searchQuery: "Raspberry Pi Servo Motor",
@@ -445,10 +425,10 @@ export const videos = [
     description: "Comprehensive tutorial on how to connect and control any servo motor with Raspberry Pi.",
     youtubeId: "g1eMMIUmh6E",
     components: [
-      "Servo Motor",
-      "Raspberry Pi",
-      "Power Supply",
-      "Jumper Wires"
+      { name: "Servo Motor", status: "USED" },
+      { name: "Raspberry Pi", status: "USED" },
+      { name: "Power Supply", status: "USED" },
+      { name: "Jumper Wires", status: "USED" }
     ]
   }
 ]
