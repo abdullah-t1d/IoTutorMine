@@ -1,0 +1,668 @@
+Video_ID   Component_Name          Surface_Form
+  V01         Arduino Uno             an Arduino
+  V01          RGBDuino             the RGBDuino
+
+  V01       Ultrasonic Sensor     an ultrasonic sensor
+
+  V01         Servo Motor            a servo motor
+  V01         Jumper Wires              jumpers
+
+  V02         Arduino Uno           an Arduino Uno
+  V02        Arduino Board       similar Arduino board
+  V02          Breadboard            a Bread Board
+                                four breadboard jumper
+  V02         Jumper Wires
+                                         wires
+  V02          USB Cable              a USB cable
+  V02           Blue LED                  blue
+  V02           Red LED                   red
+  V02          Green LED                 green
+
+  V02       220 Ohm Resistor    three 220 ohm resistors
+
+
+  V02           Resistor           different resistors
+
+
+  V03         Arduino Uno               an UNO
+  V03         Arduino Mini                a mini
+  V03         Arduino Micro              a micro
+                                a dht11 temperature and
+  V03        DHT11 Sensor
+                                    humidity sensor
+
+  V03          Breadboard            a breadboard
+
+
+  V03         Jumper Wires              (none)
+  V03          USB Cable                (none)
+
+
+                                  Elegoo mega 2560
+  V04       Elegoo Mega 2560
+                                    microcontroller
+
+                                   dht11 humidity and
+  V04        DHT11 Sensor
+                                  temperature sensor
+
+
+
+  V04       10k Potentiometer     a 10k potentiometer
+
+
+
+  V04       10k Ohm Resistor      a 10k ohm resistor
+V04    16x2 LCD Module      the 1602a lcd module
+
+                             a whole bunch of the
+V04     Jumper Wires
+                             male to male jumper
+
+V04      Breadboard            my breadboard
+
+
+V04       USB Cable                 (none)
+                           the one that doesn't have
+V04   4-pin DHT11 Sensor
+                                  the resistor
+V04     DHT22 Sensor              the DHT22
+
+
+
+V05      PIR Sensor        passive infrared sensor
+
+V05      Arduino Uno              an Arduino
+
+V05          LED                  an LED
+                           220 ohm current limiting
+V05    220 Ohm Resistor
+                                  resistor
+
+V05      Breadboard            the breadboard
+
+                             male female jumper
+V05     Jumper Wires
+                                    wires
+V05    3-wire JST Cable       three wire jst cable
+
+
+                            motion sensor or PIR
+V06      PIR Sensor
+                                   sensor
+
+V06      Arduino Uno             the Arduino
+
+V06          LED                   the LED
+V06    220 Ohm Resistor        220 ohm resistor
+V06      Breadboard                 (none)
+V06     Jumper Wires                (none)
+V06       USB Cable                 (none)
+
+
+V07      Arduino Uno            Arduino board
+
+V07      PIR Sensor               PIR sensor
+
+V07          LED                     LED
+                           220 Ohm resistor for the
+V07    220 Ohm Resistor
+                                     LED
+V07      Breadboard             a breadboard
+V07     Jumper Wires             jumper wires
+      V08      16x2 LCD Module            1602 LCD screen
+
+      V08         Arduino Uno                an Arduino
+      V08        Potentiometer            a potentiometer
+      V08      220 Ohm Resistor          a 220 ohm resistor
+      V08         Breadboard                a breadboard
+                                         male female jumper
+      V08        Jumper Wires
+                                                wires
+
+      V08            Button                   a button
+
+
+               Male Header Pins              header pins
+V08
+
+
+
+                                        the Elegoo mega 2560
+      V09      Elegoo Mega 2560
+                                               project kit
+      V09     1602A LCD Module         lcd 1602 module 1602a
+
+      V09      10k Potentiometer       a 10k ohm potentiometer
+
+      V09         Breadboard                a breadboard
+                                       16 male-to-male jumper
+      V09        Jumper Wires
+                                                wires
+                                         an old epson printer
+      V09         USB Cable
+                                                cable
+
+      V10         Arduino Uno               Arduino board
+      V10   I2C LCD Interface Module       an i2c converter
+      V10       16x2 LCD Module         a 16 by 2 LCD screen
+      V10       20x4 LCD Screen         a 20 by 4 LCD screen
+                                        male to female jumper
+      V10        Jumper Wires
+                                                 wires
+      V10         USB Cable                   USB cable
+
+      V11       Raspberry Pi 5             a Raspberry Pi5
+      V11      Ultrasonic Sensor         an ultrasonic sensor
+      V11           Blue LED                     blue
+      V11      330 Ohm Resistor           330 ohm resistor
+      V11        Jumper Wires                    wires
+      V11         Breadboard                a breadboard
+
+                                         a popular LCD 1602
+      V12      16x2 LCD Module
+                                               Module
+      V12   I2C LCD Interface Module             i2c
+      V12        Raspberry Pi 5            a Raspberry Pi5
+      V12         USB Cable                    (none)
+V12            Jumper Wires                       (none)
+
+V13           Raspberry Pi 5                 a Raspberry Pi5
+V13             Breadboard                     a breadboard
+V13            Jumper Wires                        wires
+V13             Green LED                          green
+V13          100 Ohm Resistor               a 100 ohm resistor
+V13           50 Ohm Resistor              a 50 ohm resistor
+V13               SD Card                      little SD card
+
+V14            Raspberry Pi 5                a Raspberry Pi5
+V14            DHT11 Sensor                        dht11
+V14            DHT22 Sensor                        dht22
+V14              Breadboard                   a breadboard
+V14            Breakout Cable             a white breakout cable
+V14              USB Cable                        (none)
+V14            Jumper Wires                       (none)
+
+V15           DHT11 Sensor                        dht11
+V15          Raspberry Pi 3B+               a Raspberry Pi 3B+
+V15           Jumper Wires                       (none)
+
+V15            Power Supply                   a power supply
+
+
+V16             PIR Sensor                  PIR Motion detector
+V16             Green LED                        green LED
+V16            Raspberry Pi 5                 a Raspberry Pi5
+V16             Breadboard                     a breadboard
+V16            Jumper Wires                     jumper wires
+V16              Resistor                         a resistor
+
+V17         3.5 Inch LCD Display             lcd display board
+V17            Raspberry Pi 4                a Raspberry Pi 4
+V17            Micro SD Card                   Micro SD Card
+V17             Power Supply                  a power supply
+V17                Monitor                       a monitor
+V17               Keyboard                      a keyboard
+
+V17                Mouse                         a mouse
+
+V17              HDMI Cord                      a hdmi cord
+
+
+V18            Raspberry Pi 4             a raspberry pi 4 model B
+V18        PiicoDev RFID Module                 rfid module
+V18   PiicoDev Adapter for Raspberry Pi         an adapter
+V18            PiicoDev Cable                       cable
+V18     RFID Tag (NTAG213)        an N tag 213 type of tag
+V18   RFID Tag (MIFARE classic)    a classic or mifar tag
+
+V19         Raspberry Pi             a Raspberry Pi
+V19      RC522 RFID Reader        model rc522 rfid reader
+V19          RFID Tag                     rfid tag
+V19        Display/Screen          some sort of screen
+V19        Jumper Wires                    wires
+V19         Breadboard                a breadboard
+
+V20          Servo Motor                 any servo
+V20         Raspberry Pi                raspberry pi
+                                    my old smartphone
+V20         Power Supply
+                                         charger
+V20         Jumper Wires                  (none)
+Source   Quantity     Status
+ both       1          USED
+ both       1       ALTERNATIVE
+
+ both       1          USED
+
+ both       1          USED
+ both      ~8          USED
+
+ both       1          USED
+ audio      ?       ALTERNATIVE
+ both       1          USED
+ both       4          USED
+ both       1          USED
+ both       1          USED
+ both       1          USED
+ both       1          USED
+
+ both       3          USED
+
+
+ audio      ?       ALTERNATIVE
+
+
+ both       1          USED
+ audio      ?       ALTERNATIVE
+ audio      ?       ALTERNATIVE
+ both       1          USED
+
+
+ both       1          USED
+
+
+visual      3          USED
+visual      1          USED
+
+
+
+ both       1          USED
+
+
+ both       1          USED
+
+
+
+ both       1          USED
+
+
+
+ audio      1        OPTIONAL
+both      1       USED
+
+both     ~14      USED
+
+
+both      1       USED
+
+
+visual    1       USED
+
+audio     ?    ALTERNATIVE
+
+audio     ?    ALTERNATIVE
+
+
+
+both      1       USED
+
+both      1       USED
+
+both      1       USED
+both      1       USED
+
+
+both      1       USED
+
+
+both     ≥3       USED
+
+audio     ?    ALTERNATIVE
+
+
+both      1       USED
+
+both      1       USED
+
+both      1       USED
+both      1       USED
+visual    1       USED
+visual   ≥3       USED
+visual    1       USED
+
+
+both      1       USED
+
+both      1       USED
+
+both      1       USED
+both      1       USED
+both      1       USED
+both     ≥4       USED
+both     1       USED
+
+both     1       USED
+both     1       USED
+both     1       USED
+both     1       USED
+both     ≥6      USED
+
+both     1       USED
+
+
+both     16      USED
+
+
+
+
+both     1       USED
+
+both     1       USED
+
+both     1       USED
+
+both     1       USED
+both     16      USED
+
+both     1       USED
+
+
+both     1       USED
+both     1       USED
+both     1       USED
+audio    ?    ALTERNATIVE
+both     4       USED
+both     1       USED
+
+both      1      USED
+both      1      USED
+both      1      USED
+both      1      USED
+both     ≥4      USED
+both      1      USED
+
+
+both     1       USED
+ both    1       USED
+ both    1       USED
+visual   1       USED
+       visual       4      USED
+
+        both        1      USED
+        both        1      USED
+        both        4      USED
+        both        1      USED
+        both        1      USED
+       audio        1      USED
+        both        1      USED
+
+        both        1      USED
+        both        1      USED
+        both        1   ALTERNATIVE
+        both        1      USED
+        both        1      USED
+       visual       1      USED
+       visual       3      USED
+
+        both        1      USED
+        both        1      USED
+       visual       3      USED
+
+       both     1          USED
+
+
+       both         1      USED
+       both         1      USED
+       both         1      USED
+       both         1      USED
+       both         6      USED
+       audio        1      USED
+
+        both        1      USED
+        both        1      USED
+        both        1      USED
+        both        1      USED
+both                1      USED
+both                1      USED
+
+                    1      USED
+both
+        both        1      USED
+
+
+        both        1      USED
+        both        1      USED
+        both        1      USED
+        both        1      USED
+both     1      USED
+both     1   ALTERNATIVE
+
+both     1      USED
+both     1      USED
+both     1      USED
+audio    1      USED
+ vis     3      USED
+audio    1   ALTERNATIVE
+
+both     1      USED
+both     1      USED
+
+both     1      USED
+visual   4      USED
+Criticality                              Notes
+CRITICAL                                2:57 — in BoM
+              3:46 — Alternative to Arduino Uno; has onboard buzzer & LEDs
+    —
+                                for Intruder Detector variant
+
+CRITICAL                             2:57 — in BoM
+
+               2:57 — in BoM; sensor attached via 3D-printed bracket or hot
+CRITICAL
+                                          glue
+MODERATE                            2:57 — in BoM
+
+CRITICAL                             0:11 — in BoM
+    —           0:12 — Alternative to Arduino Uno: 'similar Arduino board'
+MODERATE                             0:13 — in BoM
+MODERATE                             0:18 — in BoM
+MODERATE                             0:21 — in BoM
+MODERATE                             0:23 — in BoM
+MODERATE                             0:25 — in BoM
+MODERATE                             0:25 — in BoM
+
+MODERATE                             0:27 — in BoM
+
+               0:36 — Alternative to 220Ω: 'different resistors depending on
+    —
+                                        your LEDs'
+
+
+CRITICAL                      0:24 — Main microcontroller
+   —                    0:25 — Alternative to Arduino Uno: 'a mini'
+   —                   0:25 — Alternative to Arduino Uno: 'a micro'
+CRITICAL                0:17 — Temperature and humidity sensor
+
+
+MODERATE                           0:28 — Wiring base
+
+
+MODERATE                   0:39 — Three wires for connections
+MODERATE                        1:52 — Power/data cable
+
+
+
+CRITICAL                             0:25 — in BoM
+
+
+CRITICAL                             0:30 — in BoM
+
+
+
+MODERATE                      0:36 — in BoM (LCD contrast)
+
+
+
+              1:24 — Pull-up between VCC and data; required only with 4-pin
+MODERATE
+                                   DHT11 alternative
+CRITICAL                         0:39 — in BoM
+
+MODERATE                         0:43 — in BoM
+
+
+MODERATE                    3:21 — Prototyping base
+
+
+MODERATE                5:56 — Blue cable powering Mega
+            1:10 — Alternative to DHT11 (4-pin variant without onboard
+   —
+                                    resistor)
+   —              1:59 — Alternative to DHT11 (more accurate)
+
+
+
+CRITICAL              0:02 — Main motion detection sensor
+
+CRITICAL                     0:04 — Microcontroller
+
+MODERATE                 4:10 — External motion indicator
+MODERATE                  4:21 — Current limiter for LED
+
+
+MODERATE                       2:24 — Wiring base
+
+
+MODERATE               2:20 — Male-female for sensor pins
+
+   —       2:32 — Alternative connection for JST-connector PIR variants
+
+
+CRITICAL     0:02 — Main motion detection sensor (HC-SR501 in title)
+
+CRITICAL                     2:08 — Microcontroller
+
+MODERATE                  2:18 — Motion indicator output
+MODERATE                  2:23 — Current limiter for LED
+MODERATE                   Visual-only — verify in video
+MODERATE                   Visual-only — verify in video
+MODERATE                   Visual-only — verify in video
+
+
+CRITICAL         0:38 — in BoM; also referred to as "a RedBoard"
+
+CRITICAL                         0:39 — in BoM
+
+MODERATE                         0:39 — in BoM
+MODERATE                         0:40 — in BoM
+MODERATE                         0:42 — in BoM
+MODERATE                         0:43 — in BoM
+ CRITICAL           0:03 — Main display (16 columns × 2 rows)
+
+ CRITICAL         0:04 — Microcontroller (Uno mentioned at 3:26)
+MODERATE               1:54 — For LCD contrast adjustment
+MODERATE              4:25 — Current limiter for backlight LED
+MODERATE                      0:57 — Wiring base
+MODERATE            1:00 — For LCD-to-breadboard connections
+
+MODERATE            6:55 — Added later for input demonstration
+
+
+                     Header pins for soldering to LCD module
+MODERATE
+
+
+
+
+            0:03 — Main microcontroller board ("lagoon mega" at 0:48 is
+ CRITICAL
+                               transcription error)
+ CRITICAL            0:54 — Main display (16x2 alphanumeric)
+
+MODERATE                 1:03 — For LCD contrast control
+
+MODERATE                      1:11 — From Elegoo kit
+MODERATE              1:18 — Specific count: 16 male-to-male
+
+MODERATE               6:40 — Substitute (kit cable too short)
+
+
+ CRITICAL               1:24 — Main microcontroller board
+ CRITICAL                0:07 — Interface module for LCD
+ CRITICAL               0:37 — 16x2 display used in build
+    —                     0:49 — Alternative to 16x2 LCD
+MODERATE        1:55 — 4 male-to-female wires for I2C connections
+MODERATE              2:45 — Connects Arduino to computer
+
+ CRITICAL                          0:55 -- in BoM
+ CRITICAL                    0:58 -- in BoM, HC-SR04
+MODERATE                           1:02 -- in BoM
+MODERATE                           1:04 -- in BoM
+MODERATE                           1:05 -- in BoM
+MODERATE                           1:06 -- in BoM
+
+
+ CRITICAL                          0:07 -- in BoM
+ CRITICAL               0:07 -- in BoM, pre-attached to LCD
+ CRITICAL                           0:09 -- in BoM
+MODERATE                                 3:14
+ MODERATE                      Seen at 1:06 & 3:14
+
+  CRITICAL                         1:14 -- in Bom
+ MODERATE                          1:36 -- in Bom
+ MODERATE                   1:40 -- in Bom, 2FF & 2MM
+ MODERATE                               6:51
+ MODERATE                               7:21
+                Verify resistor value from video — unusual rating
+ MODERATE
+  CRITICAL          1:24 — Pre-installed; required for Pi boot
+
+  CRITICAL                              3:46
+  CRITICAL                              0:14
+ MODERATE                               0:14
+ MODERATE     1:02, the instructor noted that you don't need to use it
+ MODERATE    1:07, connecting the Raspberry Pi 5 and the breadboard
+ MODERATE    1:07, connecting the Raspberry Pi 5 and the breadboard
+ MODERATE                               1:24
+
+  CRITICAL                       0:48 -- in BoM
+  CRITICAL                       1:00 -- in BoM
+ MODERATE                   1:41, Female-Female
+                    Required to power the Raspberry Pi 3B+
+  CRITICAL
+
+
+  CRITICAL                       0:12 -- in BoM
+ MODERATE                        0:17 -- in BoM
+  CRITICAL                       0:21 -- in BoM
+ MODERATE                        0:22 -- in BoM
+ MODERATE                      2:44, 4FM & 2MM
+ MODERATE                  value not specified in video
+
+  CRITICAL                         1:20 -- in BoM
+  CRITICAL                         1:31 -- in BoM
+ MODERATE                          1:23 -- in BoM
+ MODERATE                          1:38 -- in BoM
+CRITICAL      Required for initial Pi setup before LCD configuration
+CRITICAL                   Required for initial Pi setup
+
+                           Required for initial Pi setup
+CRITICAL
+ MODERATE                         1:43 -- in BoM
+
+
+  CRITICAL                        0:35 -- in BoM
+  CRITICAL               0:45 -- in BoM, PiicoDev brand
+  CRITICAL                        0:50 -- in BoM
+ MODERATE                     0:50, PiicoDev cable
+CRITICAL                             1:01 -- in BoM
+MODERATE                                  1:04
+
+ CRITICAL      0:15 -- in BoM, alternative models are written on screen
+ CRITICAL                              0:22 -- in BoM
+ CRITICAL                              0:30 -- in BoM
+MODERATE                               0:25 -- in BoM
+MODERATE                   0:38 -- in BoM, either 7FF or 14FM
+    —              Alternative to direct wiring; needs 14 M-F wires
+
+CRITICAL                                 0:03
+            2:20, no version was selected, instructor said 'any rasbperry pi'
+CRITICAL
+                                        at 0:04
+MODERATE                                  2:13
+MODERATE                              2:19, ~4FM
+V17 Stylus a stylus both 1 USED MODERATE
+Useful for interacting with the 3.5"
+touchscreen
+
