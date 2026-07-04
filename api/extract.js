@@ -36,15 +36,36 @@ function parseId(url) {
 }
 
 async function getTranscript(videoId) {
+  // 1) Try direct YouTube timedtext endpoints first
+  const directUrls = [
+    `https://www.youtube.com/api/timedtext?v=${videoId}&lang=en&fmt=json3`,
+    `https://www.youtube.com/api/timedtext?v=${videoId}&lang=en&kind=asr&fmt=json3`,
+    `https://video.google.com/timedtext?v=${videoId}&lang=en&fmt=json3`,
+    `https://video.google.com/timedtext?v=${videoId}&lang=en&kind=asr&fmt=json3`
+  ];
+
+  for (const u of directUrls) {
+    const text = await transcriptFromJson3(u);
+    if (text) return text;
+  }
+
+  // 2) Fallback: parse captionTracks from YouTube watch page
   const pageRes = await fetch(`https://www.youtube.com/watch?v=${videoId}`, {
     headers: {
-      "User-Agent": "Mozilla/5.0",
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
       "Accept-Language": "en-US,en;q=0.9"
     }
   });
 
   const page = await pageRes.text();
-  const m = page.match(/"captionTracks":(\[.*?\])/);
+
+  // YouTube often escapes JSON inside HTML, so normalize common escapes
+  const normalized = page
+    .replace(/\\"/g, '"')
+    .replace(/\\u0026/g, "&")
+    .replace(/\\\//g, "/");
+
+  const m = normalized.match(/"captionTracks":(\[.*?\])/);
   if (!m) return null;
 
   let tracks;
@@ -61,17 +82,37 @@ async function getTranscript(videoId) {
     tracks.find(t => t.languageCode === "en") ||
     tracks[0];
 
-  const transcriptRes = await fetch(track.baseUrl + "&fmt=json3");
-  const data = await transcriptRes.json();
+  if (!track?.baseUrl) return null;
 
-  const text = (data.events || [])
-    .flatMap(ev => (ev.segs || []).map(s => s.utf8 || ""))
-    .join(" ")
-    .replace(/\s+/g, " ")
-    .trim()
-    .toLowerCase();
-
+  const text = await transcriptFromJson3(track.baseUrl + "&fmt=json3");
   return text || null;
+}
+
+async function transcriptFromJson3(url) {
+  try {
+    const res = await fetch(url, {
+      headers: {
+        "User-Agent": "Mozilla/5.0",
+        "Accept-Language": "en-US,en;q=0.9"
+      }
+    });
+
+    const raw = await res.text();
+    if (!raw || raw.trim().startsWith("<")) return null;
+
+    const data = JSON.parse(raw);
+
+    const text = (data.events || [])
+      .flatMap(ev => (ev.segs || []).map(s => s.utf8 || ""))
+      .join(" ")
+      .replace(/\s+/g, " ")
+      .trim()
+      .toLowerCase();
+
+    return text || null;
+  } catch {
+    return null;
+  }
 }
 
 async function callGemini(transcript, key) {
