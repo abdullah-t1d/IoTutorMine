@@ -7,18 +7,29 @@ const ALLOWED_ORIGINS = [
 const MODEL = "gemini-3-flash-preview";
 
 const PROMPT = `You extract a hardware Bill of Materials from an IoT tutorial transcript.
-Return every shoppable hardware component the presenter mentions or uses.
-Rules:
+
+Return every shoppable hardware component that is part of the tutorial build.
+
+Status rules:
+- Use "USED" when the presenter actually uses the component in the final build, wiring, assembly, demonstration, or required parts list.
+- Use "ALTERNATIVE" only when the presenter clearly presents the component as a substitute, optional replacement, different version, or alternative choice.
+- Do not mark a component as ALTERNATIVE just because it is mentioned once.
+- If the presenter compares against a part but does not use it, exclude it.
+- If uncertain, prefer "USED" only when the transcript clearly supports actual use.
+
+Extraction rules:
 - Only physically purchasable hardware parts.
-- Exclude integrated parts, consumables, software, and parts mentioned only for context or contrast.
-- Label each as "USED" or "ALTERNATIVE".
-- Deduplicate. Use the most specific name stated.
+- Exclude integrated parts such as onboard LEDs and internal pull-ups.
+- Exclude consumables, software, tools, and parts mentioned only for context or contrast.
+- Deduplicate components.
+- Use the most specific name stated, such as "Raspberry Pi 4 Model B" instead of "Raspberry Pi".
+- Keep separate physical components separate, such as "16x2 LCD display" and "I2C module".
+
 Return ONLY JSON in exactly this shape:
 {"components":[{"name":"...","status":"USED"}]}
 
 Transcript:
 `;
-
 function setCors(req, res) {
   const origin = req.headers.origin;
   const allowOrigin = ALLOWED_ORIGINS.includes(origin)
