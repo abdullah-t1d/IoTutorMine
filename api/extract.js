@@ -35,31 +35,22 @@ function parseId(url) {
   return m ? m[1] : null;
 }
 
+function cleanTranscript(text) {
+  return String(text || "")
+    .replace(/\s+/g, " ")
+    .trim()
+    .toLowerCase();
+}
+
 async function getTranscript(videoId) {
-  // 1) Try direct YouTube timedtext endpoints first
-  const directUrls = [
-    `https://www.youtube.com/api/timedtext?v=${videoId}&lang=en&fmt=json3`,
-    `https://www.youtube.com/api/timedtext?v=${videoId}&lang=en&kind=asr&fmt=json3`,
-    `https://video.google.com/timedtext?v=${videoId}&lang=en&fmt=json3`,
-    `https://video.google.com/timedtext?v=${videoId}&lang=en&kind=asr&fmt=json3`
-  ];
-
-  for (const u of directUrls) {
-    const text = await transcriptFromJson3(u);
-    if (text) return text;
-  }
-
-  // 2) Fallback: parse captionTracks from YouTube watch page
   const pageRes = await fetch(`https://www.youtube.com/watch?v=${videoId}`, {
     headers: {
-      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+      "User-Agent": "Mozilla/5.0",
       "Accept-Language": "en-US,en;q=0.9"
     }
   });
 
   const page = await pageRes.text();
-
-  // YouTube often escapes JSON inside HTML, so normalize common escapes
   const normalized = page
     .replace(/\\"/g, '"')
     .replace(/\\u0026/g, "&")
@@ -84,32 +75,48 @@ async function getTranscript(videoId) {
 
   if (!track?.baseUrl) return null;
 
-  const text = await transcriptFromJson3(track.baseUrl + "&fmt=json3");
-  return text || null;
+  const transcriptRes = await fetch(track.baseUrl + "&fmt=json3");
+  const data = await transcriptRes.json();
+
+  const text = (data.events || [])
+    .flatMap(ev => (ev.segs || []).map(s => s.utf8 || ""))
+    .join(" ");
+
+  return cleanTranscript(text);
 }
 
-async function transcriptFromJson3(url) {
+async function getTranscriptFromSupadata(url, key) {
+  if (!url || !key) return null;
+
   try {
-    const res = await fetch(url, {
+    const endpoint = `https://api.supadata.ai/v1/transcript?url=${encodeURIComponent(url)}&lang=en`;
+
+    const res = await fetch(endpoint, {
       headers: {
-        "User-Agent": "Mozilla/5.0",
-        "Accept-Language": "en-US,en;q=0.9"
+        "x-api-key": key
       }
     });
 
-    const raw = await res.text();
-    if (!raw || raw.trim().startsWith("<")) return null;
+    const data = await res.json().catch(() => null);
+    if (!res.ok || !data) return null;
 
-    const data = JSON.parse(raw);
+    if (Array.isArray(data.content)) {
+      const text = data.content
+        .map(segment => segment.text || "")
+        .join(" ");
 
-    const text = (data.events || [])
-      .flatMap(ev => (ev.segs || []).map(s => s.utf8 || ""))
-      .join(" ")
-      .replace(/\s+/g, " ")
-      .trim()
-      .toLowerCase();
+      return cleanTranscript(text);
+    }
 
-    return text || null;
+    if (typeof data.content === "string") {
+      return cleanTranscript(data.content);
+    }
+
+    if (typeof data.text === "string") {
+      return cleanTranscript(data.text);
+    }
+
+    return null;
   } catch {
     return null;
   }
@@ -147,13 +154,6 @@ async function callGemini(transcript, key) {
   }
 }
 
-function cleanTranscript(text) {
-  return String(text || "")
-    .replace(/\s+/g, " ")
-    .trim()
-    .toLowerCase();
-}
-
 export default async function handler(req, res) {
   setCors(req, res);
 
@@ -167,11 +167,9 @@ export default async function handler(req, res) {
 
   try {
     const { url, transcript } = req.body || {};
-
-    let videoId = parseId(url);
+    const videoId = parseId(url);
     let finalTranscript = cleanTranscript(transcript);
 
-    // If no manual transcript is provided, try YouTube URL extraction
     if (!finalTranscript) {
       if (!videoId) {
         return res.status(400).json({
@@ -180,6 +178,10 @@ export default async function handler(req, res) {
       }
 
       finalTranscript = await getTranscript(videoId);
+
+      if (!finalTranscript) {
+        finalTranscript = await getTranscriptFromSupadata(url, process.env.SUPADATA_KEY);
+      }
 
       if (!finalTranscript) {
         return res.status(422).json({
