@@ -147,6 +147,13 @@ async function callGemini(transcript, key) {
   }
 }
 
+function cleanTranscript(text) {
+  return String(text || "")
+    .replace(/\s+/g, " ")
+    .trim()
+    .toLowerCase();
+}
+
 export default async function handler(req, res) {
   setCors(req, res);
 
@@ -159,23 +166,33 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { url } = req.body || {};
-    const videoId = parseId(url);
+    const { url, transcript } = req.body || {};
 
-    if (!videoId) {
-      return res.status(400).json({ error: "Invalid YouTube URL" });
+    let videoId = parseId(url);
+    let finalTranscript = cleanTranscript(transcript);
+
+    // If no manual transcript is provided, try YouTube URL extraction
+    if (!finalTranscript) {
+      if (!videoId) {
+        return res.status(400).json({
+          error: "Provide either a valid YouTube URL or a transcript."
+        });
+      }
+
+      finalTranscript = await getTranscript(videoId);
+
+      if (!finalTranscript) {
+        return res.status(422).json({
+          error: "No transcript available for this video. You can paste the transcript manually."
+        });
+      }
     }
 
-    const transcript = await getTranscript(videoId);
-
-    if (!transcript) {
-      return res.status(422).json({ error: "No transcript available for this video" });
-    }
-
-    const components = await callGemini(transcript, process.env.GEMINI_KEY);
+    const components = await callGemini(finalTranscript, process.env.GEMINI_KEY);
 
     return res.status(200).json({
-      videoId,
+      videoId: videoId || null,
+      source: transcript ? "manual-transcript" : "youtube-url",
       components
     });
   } catch (e) {
